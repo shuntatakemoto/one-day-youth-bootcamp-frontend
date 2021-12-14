@@ -1,4 +1,4 @@
-import { Button, Input } from '@chakra-ui/react';
+import { Button, Flex, Input, Spacer } from '@chakra-ui/react';
 import React from 'react';
 import { Task } from '../';
 
@@ -29,19 +29,22 @@ export const TaskForm: React.FC<Props> = ({ tasks, setTasks, newTaskLabel, setNe
   };
 
   return (
-    <>
+    <Flex w='50%' justify='center'>
       <Input
         onChange={handleNewTaskLabel}
         type='text'
         value={newTaskLabel}
         placeholder='enter the task'
+        width='50%'
       />
+      <Spacer />
       <Button onClick={handleAddTask} colorScheme='blue'>
         Add
       </Button>
+      <Spacer />
       <Button onClick={handleClearTasks} colorScheme='blue'>
         Clear
       </Button>
-    </>
+    </Flex>
   );
 };
