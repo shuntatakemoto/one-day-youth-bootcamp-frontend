@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { TaskList } from './components/TaskList';
 import { TaskForm } from './components/TaskForm';
 import { request } from './server';
+import { Box, ChakraProvider } from '@chakra-ui/react';
 
 // TODOタスクの型
 export type Task = { label: string; isDone: boolean };
@@ -18,17 +19,18 @@ const App: React.VFC = () => {
   }, []);
 
   return (
-    <div style={{ width: '700px', margin: '0 auto' }}>
+    <ChakraProvider>
       {/* ヘッダー */}
-      <h1>Tutorial Works</h1>
-      <h2>React Todo List</h2>
+      <Box bg='tomato' w='100%' p={4} color='white'>
+        React Todo List
+      </Box>
 
       {/* 一覧表示 */}
       <TaskList {...{ tasks, setTasks }} />
 
       {/* タスク追加、削除 */}
       <TaskForm {...{ tasks, setTasks, newTaskLabel, setNewTaskLabel }} />
-    </div>
+    </ChakraProvider>
   );
 };
 

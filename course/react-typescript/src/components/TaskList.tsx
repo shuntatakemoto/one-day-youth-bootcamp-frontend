@@ -1,3 +1,5 @@
+import { Box, Stack } from '@chakra-ui/react';
+import { Checkbox, CheckboxGroup } from '@chakra-ui/react';
 import React from 'react';
 import { Task } from '..';
 
@@ -16,13 +18,14 @@ export const TaskList: React.FC<Props> = ({ tasks, setTasks }) => {
   };
 
   return (
-    <ul>
+    <Stack>
       {tasks.map((task, index) => (
-        <li key={`todo-${index}`}>
-          {task.isDone ? <s>{task.label}</s> : task.label}
-          <input onChange={(e) => handleCheckBox(e, index)} type='checkbox' checked={task.isDone} />
-        </li>
+        <Box key={`todo-${index}`}>
+          <Checkbox onChange={(e) => handleCheckBox(e, index)} checked={task.isDone}>
+            {task.isDone ? <s>{task.label}</s> : task.label}
+          </Checkbox>
+        </Box>
       ))}
-    </ul>
+    </Stack>
   );
 };
